@@ -8,6 +8,9 @@ ctx = null
 let field = []
 let nextfield = []
 
+// 番兵の便利さを今回は思い知った
+// 逆にこれ使わずにオセロとかどうやって書くんだよってかんじ
+// 再帰でオセロを書きたいと数万回述べている
 const clear = () => {
     for (let y = 0; y < size + 2; y++) {
         field[y] = []
@@ -63,6 +66,7 @@ const step = () => {
     }
     // この書き方だと，めちゃくちゃ重くなる，なぜか
     //[field, nextfield] = [nextfield, field]
+    // 謎に async を使ってるのが問題説？t-kihira との違いってそこくらいじゃ？と思ってる
     let buf = field
     field = nextfield
     nextfield = buf
